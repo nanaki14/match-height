@@ -1,0 +1,8 @@
+{
+  "name": "@nanaki14/match-height",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "repository": "git@github.com:nanaki14/match-height.git",
+  "author": "nanaki14 <masatochiba0122@gmail.com>",
+  "license": "MIT"
+}
