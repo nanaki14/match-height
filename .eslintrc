@@ -21,7 +21,8 @@
     "no-dupe-class-members": "off",
     "import/no-unresolved": "off",
     "import/order": ["error"],
-    "sort-destructure-keys/sort-destructure-keys": 2
+    "sort-destructure-keys/sort-destructure-keys": 2,
+    "comma-dangle": "off"
   },
   "globals": {}
 }
