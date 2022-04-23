@@ -1,6 +1,7 @@
-const errorThreshold = 1
+import { throttle } from './throttle'
 
-export const matchHeight = (params: { selector?: string }) => {
+const ERROR_THRESHOLD = 1
+export const matchHeight = (params?: { selector?: string }) => {
   let initialized = false
   let remains: {
     element: globalThis.HTMLElement
@@ -8,7 +9,7 @@ export const matchHeight = (params: { selector?: string }) => {
     height: number
   }[]
   const targets = document.querySelectorAll<globalThis.HTMLElement>(
-    params.selector || '[data-mh]'
+    params?.selector || '[data-mh]'
   )
 
   const init = () => {
@@ -37,6 +38,8 @@ export const matchHeight = (params: { selector?: string }) => {
     process()
   }
 
+  const throttleUpdate = throttle(update, 200)
+
   const process = () => {
     remains.forEach((item) => {
       const bb = item.element.getBoundingClientRect()
@@ -49,14 +52,14 @@ export const matchHeight = (params: { selector?: string }) => {
 
     const processingTop = remains[0].top
     const processingTargets = remains.filter(
-      (item) => Math.abs(item.top - processingTop) <= errorThreshold
+      (item) => Math.abs(item.top - processingTop) <= ERROR_THRESHOLD
     )
     const maxHeightInRow = Math.max(
       ...processingTargets.map((item) => item.height)
     )
 
     processingTargets.forEach((item) => {
-      const error = processingTop - item.top + errorThreshold
+      const error = processingTop - item.top + ERROR_THRESHOLD
       const paddingAndBorder =
         parseFloat(
           window.getComputedStyle(item.element).getPropertyValue('padding-top')
@@ -86,5 +89,21 @@ export const matchHeight = (params: { selector?: string }) => {
     if (remains.length > 0) {
       process()
     }
+  }
+
+  const watch = () => {
+    window.addEventListener('resize', throttleUpdate)
+  }
+
+  const stop = () => {
+    window.removeEventListener('resize', throttleUpdate)
+  }
+
+  return {
+    watch,
+    stop,
+    init,
+    update,
+    throttleUpdate,
   }
 }

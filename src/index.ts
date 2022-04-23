@@ -1,1 +1,1 @@
-export const matchHeight = {}
+export { matchHeight } from './matchHeight'

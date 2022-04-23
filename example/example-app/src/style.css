@@ -1,8 +1,35 @@
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
+
+.pageTitle {
+  margin-bottom: 60px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.item {
+  width: calc((100% - 100px) / 3);
+  margin-left: 50px;
+  margin-top: 50px;
+  border-bottom: 1px solid #000;
+}
+
+.item:nth-child(3n+1) {
+  margin-left: 0px;
+}
+
+.item:nth-child(-n+3) {
+  margin-top: 0px;
+}
+
