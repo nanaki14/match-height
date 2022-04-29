@@ -1,4 +1,4 @@
-[@nanaki14/match-height](npmjs.com/package/@nanaki14/match-height
+[@nanaki14/match-height](npmjs.com/package/@nanaki14/match-height)
 
 ## About
 
