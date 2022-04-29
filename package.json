@@ -5,6 +5,9 @@
   "repository": "git@github.com:nanaki14/match-height.git",
   "author": "nanaki14 <masatochiba0122@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "prepare": "tsc"
+  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.19.0",
     "@typescript-eslint/parser": "^5.19.0",
